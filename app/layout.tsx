@@ -3,17 +3,8 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import ReactQueryClientProvider from 'config/ReactQueryClientProvider';
 import RecoilProvider from 'config/RecoilProvider';
-
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-});
+import Auth from 'components/auth';
+import MainLayout from 'components/layouts/main-layout';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -25,6 +16,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const loggedIn = true;
+
   return (
     <html lang="en">
       <head>
@@ -36,11 +29,11 @@ export default function RootLayout({
           referrerPolicy="no-referrer"
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="">
         <RecoilProvider>
-          <ReactQueryClientProvider>{children}</ReactQueryClientProvider>
+          <ReactQueryClientProvider>
+            {loggedIn ? <MainLayout>{children}</MainLayout> : <Auth />}
+          </ReactQueryClientProvider>
         </RecoilProvider>
       </body>
     </html>
