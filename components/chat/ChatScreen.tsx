@@ -13,6 +13,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { getAllMessages, getUserById, sendMessage } from 'actions/chatActions';
 import { createBrowserSupabaseClient } from 'utils/supabase/client';
 
+// 아
 export default function ChatScreen({}) {
   const selectedUserId = useRecoilValue(selectedUserIdState);
   const selectedUserIndex = useRecoilValue(selectedUserIndexState);
