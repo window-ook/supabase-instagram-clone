@@ -10,8 +10,8 @@ const timeAgo = new TimeAgo('ko-KR');
 
 export default function Person({
   index,
-  name,
   userId,
+  name,
   onlineAt,
   isActive = false,
   onChatScreen = false,
@@ -23,7 +23,7 @@ export default function Person({
         onClick && 'cursor-pointer'
       } gap-4 items-center p-4 ${
         !onChatScreen && isActive && 'bg-light-blue-50'
-      }  ${!onChatScreen && !isActive && 'bg-gray-50'} ${
+      } ${!onChatScreen && !isActive && 'bg-gray-50'} ${
         onChatScreen && 'bg-gray-50'
       }`}
       onClick={onClick}
@@ -35,7 +35,9 @@ export default function Person({
       />
       <div>
         <p className="text-black font-bold text-lg">{name}</p>
-        <p className="text-gray-500">{timeAgo.format(Date.parse(onlineAt))}</p>
+        <p className="text-gray-500 text-sm">
+          {onlineAt && timeAgo.format(Date.parse(onlineAt))}
+        </p>
       </div>
     </div>
   );
