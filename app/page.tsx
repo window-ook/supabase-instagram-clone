@@ -1,5 +1,6 @@
 import LogoutButton from 'components/logout-button';
 import { createServerSupabaseClient } from 'utils/supabase/server';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Inflearngram',
